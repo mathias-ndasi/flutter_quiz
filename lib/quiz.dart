@@ -1,4 +1,6 @@
+import 'package:flutter_quiz/data/questions.dart';
 import 'package:flutter_quiz/questions_screen.dart';
+import 'package:flutter_quiz/results_screen.dart';
 import 'package:flutter_quiz/start_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +15,7 @@ class Quiz extends StatefulWidget {
 
 class _QuizState extends State<Quiz> {
   var activeScreen = 'start-screen';
+  final List<String> selectedAnswers = [];
 
   // @override
   // void initState() {
@@ -24,6 +27,40 @@ class _QuizState extends State<Quiz> {
     setState(() {
       activeScreen = 'questions-screen';
     });
+  }
+
+  void chooseAnswer(String answer) {
+    debugPrint('Chosen answer: $answer');
+    selectedAnswers.add(answer);
+
+    if (selectedAnswers.length == questions.length) {
+      setState(() {
+        activeScreen = 'results-screen';
+      });
+
+      selectedAnswers.clear(); // Clear the list for the next round.
+    }
+  }
+
+  void restartQuiz() {
+    setState(() {
+      activeScreen = 'start-screen';
+    });
+  }
+
+  Widget getActiveScreen({required String screenName}) {
+    switch (screenName) {
+      case 'questions-screen':
+        return QuestionsScreen(
+          onSelectAnswer: chooseAnswer,
+        );
+      case 'results-screen':
+        return ResultsScreen(
+          onRestartQuiz: restartQuiz,
+        );
+      default:
+        return StartScreen(switchScreen);
+    }
   }
 
   @override
@@ -41,9 +78,7 @@ class _QuizState extends State<Quiz> {
               end: Alignment.bottomRight,
             ),
           ),
-          child: activeScreen == 'start-screen'
-              ? StartScreen(switchScreen)
-              : QuestionsScreen(),
+          child: getActiveScreen(screenName: activeScreen),
         ),
       ),
     );
