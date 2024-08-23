@@ -37,15 +37,15 @@ class _QuizState extends State<Quiz> {
       setState(() {
         activeScreen = 'results-screen';
       });
-
-      selectedAnswers.clear(); // Clear the list for the next round.
     }
   }
 
   void restartQuiz() {
     setState(() {
-      activeScreen = 'start-screen';
+      activeScreen = 'questions-screen';
     });
+
+    selectedAnswers.clear(); // Clear the list for the next round.
   }
 
   Widget getActiveScreen({required String screenName}) {
@@ -57,6 +57,7 @@ class _QuizState extends State<Quiz> {
       case 'results-screen':
         return ResultsScreen(
           onRestartQuiz: restartQuiz,
+          chosenAnswers: selectedAnswers,
         );
       default:
         return StartScreen(switchScreen);
