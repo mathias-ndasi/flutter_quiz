@@ -30,6 +30,7 @@ class QuestionsSummary extends StatelessWidget {
                     incorrectAnswerColor: incorrectAnswerColor,
                     questionIndex: data['questionIndex'] as int,
                   ),
+                  const SizedBox(width: 10),
                   SummaryItem(
                     summaryData: data,
                     isCorrectAnswer: isCorrectAnswer,

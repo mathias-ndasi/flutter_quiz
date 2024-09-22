@@ -41,7 +41,7 @@ class StartScreen extends StatelessWidget {
               ),
               side: const BorderSide(
                 width: 1.0,
-                color: Colors.black,
+                color: Color.fromARGB(137, 255, 255, 255),
               ),
             ),
             onPressed: () {

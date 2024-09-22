@@ -14,24 +14,28 @@ class AnswerItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          '$label: ',
-          style: const TextStyle(
-            color: Color.fromARGB(255, 180, 163, 163),
-          ),
-        ),
-        Flexible(
-          child: Text(
-            text,
-            style: TextStyle(
-              color: color,
+    return SizedBox(
+      child: Expanded(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '$label: ',
+              style: const TextStyle(
+                color: Color.fromARGB(255, 180, 163, 163),
+              ),
             ),
-          ),
+            Flexible(
+              child: Text(
+                text,
+                style: TextStyle(
+                  color: color,
+                ),
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

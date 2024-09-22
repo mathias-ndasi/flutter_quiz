@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz/data/questions.dart';
-import 'package:flutter_quiz/restart_quiz_button.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_quiz/restart_quiz_button.dart';
 import 'package:flutter_quiz/questions_summary/questions_summary.dart';
 
 class ResultsScreen extends StatelessWidget {
@@ -43,26 +43,24 @@ class ResultsScreen extends StatelessWidget {
       height: double.infinity,
       child: Container(
         margin: const EdgeInsets.all(40),
-        child: Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'You answered $numberOfCorrectQuestions out of $numberOfTotalQuestions questions correctly!',
-                textAlign: TextAlign.center,
-                style: GoogleFonts.lato(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: const Color.fromARGB(255, 230, 200, 253),
-                ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'You answered $numberOfCorrectQuestions out of $numberOfTotalQuestions questions correctly!',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.lato(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: const Color.fromARGB(255, 230, 200, 253),
               ),
-              const SizedBox(height: 30),
-              QuestionsSummary(summaryData: summaryData),
-              const SizedBox(height: 30),
-              RestartQuizButton(onRestartQuiz: onRestartQuiz),
-            ],
-          ),
+            ),
+            const SizedBox(height: 30),
+            QuestionsSummary(summaryData: summaryData),
+            const SizedBox(height: 30),
+            RestartQuizButton(onRestartQuiz: onRestartQuiz),
+          ],
         ),
       ),
     );

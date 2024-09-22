@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_quiz/questions_summary/answer_item.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_quiz/questions_summary/answer_item.dart';
 
 class SummaryItem extends StatelessWidget {
   const SummaryItem({
@@ -19,9 +19,9 @@ class SummaryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
           Text(
             summaryData['question'] as String,
             style: GoogleFonts.lato(
@@ -29,6 +29,8 @@ class SummaryItem extends StatelessWidget {
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
+            overflow: TextOverflow.clip,
+            softWrap: true,
           ),
           const SizedBox(height: 5),
           AnswerItem(
@@ -41,7 +43,7 @@ class SummaryItem extends StatelessWidget {
             color: correctAnswerColor,
             text: summaryData['correctAnswer'] as String,
           ),
-        ]),
+        ],
       ),
     );
   }
